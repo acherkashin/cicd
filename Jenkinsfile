@@ -31,23 +31,22 @@ pipeline {
     stage('Build') {
       steps {
         script {
-          sh 'npm start'
-          sh 'npm pack'
+          sh 'yarn build'
         }
       }
     }
-    stage('Deploy') {
-      when {
-        expression {
-          currentBuild.result == null || currentBuild.result == 'SUCCESS'
-        }
-      }
-      steps {
-        script {
+    // stage('Deploy') {
+    //   when {
+    //     expression {
+    //       currentBuild.result == null || currentBuild.result == 'SUCCESS'
+    //     }
+    //   }
+    //   steps {
+    //     script {
         //   def server = Artifactory.server 'My_Artifactory'
         //   uploadArtifact(server)
-        }
-      }
+    //     }
+    //   }
     }
   }
 }
